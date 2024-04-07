@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func funcDefer() {
 	defer fmt.Println("main func final-finish")
@@ -17,6 +20,6 @@ func trimExtension(files ...string) []string { // 引数で3ドットString 可�
 
 func main() {
 	funcDefer()
-	files := []string("file1.csv", "file2.csv", "file3.csv") // String型のスライスをつくり3つのファイル名で初期化
+	files := []string{"file1.csv", "file2.csv", "file3.csv"} // String型のスライスをつくり3つのファイル名で初期化
 	fmt.Println(trimExtension(files...)) // filesのStringスライスを可変長引数の形に変換
 }
