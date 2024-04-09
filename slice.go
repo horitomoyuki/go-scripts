@@ -15,7 +15,7 @@ func main() {
   fmt.Printf("s1: %[1]T %[1]v %v %v\n", s1, len(s1), cap(s1))
   fmt.Printf("s2: %[1]T %[1]v %v %v\n", s2, len(s2), cap(s2))
   fmt.Println(s1 == nil) // varで初期化した場合はnilとして認識される
-  fmt.Println(s2 == nil) // := で初期化された場合はnilとして認識される
+  fmt.Println(s2 == nil) // := で初期化された場合はnilとして認識されない
 
 	s1 = append(s1, 1, 2, 3) // append で要素の追加をするスライス
 	fmt.Printf("s1: %[1]T %[1]v %v %v\n", s1, len(s1), cap(s1)) // 要素が追加され、要素数とキャパシティが3になる
