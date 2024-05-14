@@ -1,8 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"go-basics/modules/calculator"
+	"os"
+
+	"github.com/joho/godotenv"
+)
 
 func main() {
+	godotenv.Load()
+	fmt.Println(os.Getenv("GO_ENV"))
+	fmt.Println(calculator.Offset)
+	fmt.Println(calculator.Sum(1, 2))
+	fmt.Println(calculator.Multiply(1, 2))
+
+	fmt.Printf("%v\n", "---------")
+
 	var a1 int = 3              // 明示的な代入を省略した場合は0値で初期化 0が3つの要素で初期化
 	var a2 = [3]int{10, 20, 30} // 明示的な代入
 	a3 := [...]int{10, 20}      // 要素数のところでスリードットをつけると自動的にカウントしてくれる
