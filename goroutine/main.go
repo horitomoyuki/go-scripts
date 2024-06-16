@@ -12,15 +12,6 @@ import (
 )
 
 func main() {
-	// var wg sync.WaitGroup
-	// wg.Add(1)
-	// go func() {
-	// 	defer wg.Done()
-	// 	fmt.Println("goroutine invoked")
-	// }()
-	// wg.Wait()
-	// fmt.Printf("num of working goroutines: %d\n", runtime.NumGoroutine())
-	// fmt.Println("main func finish")
 	f, err := os.Create("trace.out")
 	if err != nil {
 		log.Fatalln("Error:", err)
@@ -38,9 +29,6 @@ func main() {
 	defer t.End()
 	fmt.Println("The number of logical CPU Cores:", runtime.NumCPU())
 
-	// task(ctx, "Task1")
-	// task(ctx, "Task2")
-	// task(ctx, "Task3")
 	var wg sync.WaitGroup
 	wg.Add(3)
 	go cTask(ctx, &wg, "Task1")
