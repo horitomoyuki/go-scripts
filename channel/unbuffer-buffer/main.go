@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 )
 
 func main() {
@@ -18,4 +19,5 @@ func main() {
 	go func() {
 		fmt.Println(<-ch1)
 	}()
+	fmt.Printf("num of working goroutines: %d\n", runtime.NumGoroutine())
 }
