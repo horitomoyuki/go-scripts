@@ -29,4 +29,20 @@ func main() {
 	fmt.Printf("%v %v\n", v, ok)
 	v, ok = <-ch2
 	fmt.Printf("%v %v\n", v, ok)
+
+	ch3 := generateCountStream()
+	for v := range ch3 {
+		fmt.Println(v)
+	}
+}
+
+func generateCountStream() <-chan int {
+	ch := make(chan int)
+	go func() {
+		defer close(ch)
+		for i := 0; i <= 5; i++ {
+			ch <- i
+		}
+	}()
+	return ch
 }
