@@ -18,4 +18,11 @@ func main() {
 	v, ok := <-ch1
 	fmt.Printf("%v %v\n", v, ok)
 	wg.Wait()
+
+	ch2 := make(chan int, 2)
+	ch2 <- 1
+	ch2 <- 2
+	close(ch2)
+	v, ok = <-ch2
+	fmt.Printf("%v %v\n", v, ok)
 }
