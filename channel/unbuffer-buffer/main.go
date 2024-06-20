@@ -21,8 +21,10 @@ func main() {
 	}()
 	ch1 <- 10
 	fmt.Printf("num of working goroutines: %d\n", runtime.NumGoroutine())
-
-	ch2 := make(chan int, 1)
+	// deadlock
+	ch2 := make(chan int, 2)
 	ch2 <- 2
+	ch2 <- 3
+	ch2 <- 3
 	fmt.Println(<-ch2)
 }
