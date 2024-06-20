@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"sync"
+	"time"
 )
 
 func main() {
@@ -34,6 +35,23 @@ func main() {
 	for v := range ch3 {
 		fmt.Println(v)
 	}
+
+	nCh := make(chan struct{})
+	for i := 0; i < 5; i++ {
+		wg.Add(1)
+		go func(i int) {
+			defer wg.Done()
+			fmt.Printf("goroutine %v started\n", i)
+			<-nCh
+			fmt.Println(i)
+		}(i)
+	}
+	time.Sleep(2 * time.Second)
+	close(nCh)
+	fmt.Println("unblocked by manual close")
+
+	wg.Wait()
+	fmt.Println("finish")
 }
 
 func generateCountStream() <-chan int {
