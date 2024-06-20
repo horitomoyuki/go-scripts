@@ -25,4 +25,8 @@ func main() {
 	close(ch2)
 	v, ok = <-ch2
 	fmt.Printf("%v %v\n", v, ok)
+	v, ok = <-ch2
+	fmt.Printf("%v %v\n", v, ok)
+	v, ok = <-ch2
+	fmt.Printf("%v %v\n", v, ok)
 }
