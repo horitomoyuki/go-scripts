@@ -19,5 +19,6 @@ func main() {
 	go func() {
 		fmt.Println(<-ch1)
 	}()
+	ch1 <- 10
 	fmt.Printf("num of working goroutines: %d\n", runtime.NumGoroutine())
 }
